@@ -1,3 +1,5 @@
+#include "main.h"
+
 /**
  * _printf - print a formatted output.
  *
@@ -12,15 +14,17 @@ int _printf(const char *format, ...)
 	va_list varAargs;
 	int counter;
 
+
 	if (format == NULL)
 		return (-1);
-						
+
 	buffer = malloc(sizeof(char) * 1024);	
 	if (buffer == NULL)
 		return (-1);
-								
-	va_start(args, format);
+
+	va_start(varAargs, format);
 	counter = print_output(format, varAargs, buffer);
-								
+	va_end(varAargs);
+
 return (counter); 
 }
