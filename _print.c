@@ -24,3 +24,34 @@ int _printf(const char *format, ...)
 								
 return (counter); 
 }
+
+/**
+ * print_output - print a formatted output.
+ *
+ * @format: string pointer to print - may contain directives.
+ * @val: Variable number of arguments.
+ * @buffer: memory buffer var.
+ *
+ * Return: # of characters printed.
+ */
+ 
+int print_output(const char *format, va_list val, char* buffer)
+{
+	int i = 0, j=0, k;
+	char *tmps, tmpd[20];
+	
+	while (format[i])
+	{
+		if(format[i] == '%')
+	  	{
+	 		i++;
+	    }
+	   	 else 
+		    buffer[j++] = format[i];
+	    	i++;
+	} 
+		
+	fwrite(buffer, j, 1, stdout);
+
+return (j);
+}
