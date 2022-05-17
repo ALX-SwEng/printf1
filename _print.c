@@ -49,12 +49,11 @@ int print_output(const char *format, va_list val, char* buffer)
 		if(format[i] == '%')
 	  	{
 	 		i++;
-	    }
-	   	 else 
+		}
+		else 
 		    buffer[j++] = format[i];
-	    	i++;
-	} 
-		
+		    	i++;
+	}
 	fwrite(buffer, j, 1, stdout);
 
 return (j);
