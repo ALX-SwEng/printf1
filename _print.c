@@ -40,7 +40,7 @@ return (counter);
 
 int print_output(const char *format, va_list val, char *buffer)
 {
-	int i = 0, j = 0, k;
+	int i = 0, j = 0;
 	char *tmps, tmpd[20];
 
 	while (format[i])
