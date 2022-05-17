@@ -46,10 +46,10 @@ int print_output(const char *format, va_list val, char *buffer)
 	while (format[i])
 	{
 		if (format[i] == '%')
-	  	{
-	 		i++;
-			switch (format[i]) 
-	 		{
+		{
+			i++;
+			switch (format[i])
+			{
 			case 'c':
 				buffer[j] = (char)va_arg(val, int);
 				j++;
@@ -68,9 +68,9 @@ int print_output(const char *format, va_list val, char *buffer)
 			default:
 				buffer[j++] = format[i];
 			}
-	    }
-	else
-		buffer[j++] = format[i];
+		}
+		else
+			buffer[j++] = format[i];
 		i++;
 	}
 	fwrite(buffer, j, 1, stdout);
