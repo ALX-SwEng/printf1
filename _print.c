@@ -1,3 +1,11 @@
+/**
+ * _printf - print a formatted output.
+ *
+ * @format: string pointer to print - may contain directives.
+ *
+ * Return: # of characters printed.
+ */
+
 int _printf(const char *format, ...)
 { 
 	char *buffer;
