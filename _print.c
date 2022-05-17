@@ -49,6 +49,27 @@ int print_output(const char *format, va_list val, char* buffer)
 		if(format[i] == '%')
 	  	{
 	 		i++;
+			switch (format[i]) 
+	 		{
+		 	    case 'c': 
+		 	        buffer[j] = (char)va_arg( val, int );
+		 	        j++;
+		 	        break;
+													    case 's':
+			      	tmps = va_arg( val, char*);
+			        strcpy(&buffer[j], tmps);
+			        j += strlen(tmps);
+			        break;
+												 	    case 'd': 
+		 	    case 'i':
+		 	        itoa(va_arg( val, int ), tmpd, 10);
+		 	        strcpy(&buffer[j], tmpd);
+		 	        j += strlen(tmpd);
+			        break;
+
+    			    default:
+				buffer[j++] = format[i];	
+	        }
 	    }
 	   	 else 
 		    buffer[j++] = format[i];
