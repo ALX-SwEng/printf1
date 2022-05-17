@@ -10,5 +10,7 @@
 
 void _putchar(char);
 int _printf(const char *format, ...);
+int print_output(const char *format, va_list val, char* buffer);
+
 
 #endif
