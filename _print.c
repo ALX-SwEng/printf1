@@ -55,7 +55,7 @@ int print_output(const char *format, va_list val, char *buffer)
 
 	while (format[i])
 	{
-		if (format[i] == '%')
+		if (format[i] == '%' && format[i+1] != '0')
 		{
 			i++;
 			switch (format[i])
