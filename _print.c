@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "main.h"
 #include <limits.h>
 #include <stdio.h>
@@ -47,16 +50,16 @@ return (counter);
 
 int print_output(const char *format, va_list val, char *buffer)
 {
-	int i = 0, j = 0, k;
+	int i = 0, j = 0;
 	char *tmps, tmpd[20];
 
 	while (format[i])
 	{
 		if (format[i] == '%')
-	  	{
-	 		i++;
-			switch (format[i]) 
-	 		{
+		{
+			i++;
+			switch (format[i])
+			{
 			case 'c':
 				buffer[j] = (char)va_arg(val, int);
 				j++;
@@ -75,9 +78,9 @@ int print_output(const char *format, va_list val, char *buffer)
 			default:
 				buffer[j++] = format[i];
 			}
-	    }
-	else
-		buffer[j++] = format[i];
+		}
+		else
+			buffer[j++] = format[i];
 		i++;
 	}
 	fwrite(buffer, j, 1, stdout);
