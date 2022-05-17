@@ -9,16 +9,15 @@
  */
 
 int _printf(const char *format, ...)
-{ 
+{
 	char *buffer;
 	va_list varAargs;
 	int counter;
 
-
 	if (format == NULL)
 		return (-1);
 
-	buffer = malloc(sizeof(char) * 1024);	
+	buffer = malloc(sizeof(char) * 1024);
 	if (buffer == NULL)
 		return (-1);
 
@@ -26,7 +25,7 @@ int _printf(const char *format, ...)
 	counter = print_output(format, varAargs, buffer);
 	va_end(varAargs);
 
-return (counter); 
+return (counter);
 }
 
 /**
@@ -38,44 +37,43 @@ return (counter);
  *
  * Return: # of characters printed.
  */
- 
-int print_output(const char *format, va_list val, char* buffer)
+
+int print_output(const char *format, va_list val, char *buffer)
 {
-	int i = 0, j=0, k;
+	int i = 0, j = 0, k;
 	char *tmps, tmpd[20];
-	
+
 	while (format[i])
 	{
-		if(format[i] == '%')
+		if (format[i] == '%')
 	  	{
 	 		i++;
 			switch (format[i]) 
 	 		{
-		 	    case 'c': 
-		 	        buffer[j] = (char)va_arg( val, int );
-		 	        j++;
-		 	        break;
-													    case 's':
-			      	tmps = va_arg( val, char*);
-			        strcpy(&buffer[j], tmps);
-			        j += strlen(tmps);
-			        break;
-												 	    case 'd': 
-		 	    case 'i':
-		 	        itoa(va_arg( val, int ), tmpd, 10);
-		 	        strcpy(&buffer[j], tmpd);
-		 	        j += strlen(tmpd);
-			        break;
-
-    			    default:
+			case 'c':
+				buffer[j] = (char)va_arg( val, int );
+				j++;
+				break;
+			case 's':
+				tmps = va_arg(val, char*);
+				strcpy(&buffer[j], tmps);
+				j += strlen(tmps);
+				break;
+			case 'd':
+			case 'i':
+				itoa(va_arg( val, int ), tmpd, 10);
+				strcpy(&buffer[j], tmpd);
+				j += strlen(tmpd);
+				break;
+			default:
 				buffer[j++] = format[i];	
 	        }
 	    }
-	   	 else 
-		    buffer[j++] = format[i];
-	    	i++;
+	else 
+		buffer[j++] = format[i];
+		i++;
 	} 
-		
+
 	fwrite(buffer, j, 1, stdout);
 
 return (j);
