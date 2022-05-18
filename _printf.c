@@ -27,7 +27,6 @@ return (counter);
  * @val: Variable number of arguments.
  * Return: # of characters printed.
  */
-
 int printf_output(const char *format, va_list val)
 {
 	int i = 0, j = 0, k = 0;
@@ -40,15 +39,15 @@ int printf_output(const char *format, va_list val)
 			if (format[i + 1] == '%')
 			{
 				_putchar(format[i++]);
-				j++;}
+				j++; }
 			else if (format[i + 1] == '\0')
 			{
 				_putchar(format[i]);
-				return (++j);}
+				return (++j); }
 
 			i++;
-	 		switch (format[i]) 
-	 		{
+			switch (format[i])
+			{
 			case 'c':
 				c = (char)va_arg(val, int);
 				_putchar(c);
@@ -58,12 +57,12 @@ int printf_output(const char *format, va_list val)
 				tmps = va_arg(val, char*);
 				if (tmps == NULL)
 					return (-1);
-				while(tmps[k])
+				while (tmps[k])
 				{
 					_putchar(tmps[k++]);
 					j++; }
 				break;
-		 	case 'd':
+			case 'd':
 			case 'i':
 				j += printf_int(val);
 				break;
