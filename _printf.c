@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "main.h"
 
-
 /**
  * _printf - print a formatted output.
  *
@@ -87,17 +86,16 @@ int printf_output(const char *format, va_list val)
 	    }
 	    else
 	    {
-		   	_putchar(format[i]);
-		   	++j;
+		  _putchar(format[i]);
+		    ++j;
 		}
 		++i;
 	}
 
 return (j);
- }
+}
  
- 
- /**
+/**
  * print_i - prints int func
  * @arg: int to print
  * Return: number of ints printed
@@ -107,8 +105,7 @@ int printf_int(va_list arg)
 	int num = va_arg(arg, int);
 	unsigned int count = 0, revNum, temp;
 	int i = 0, j = 0;
-	char table [41];
-
+	char table[41];
 	if (num < 0)
 	{
 		_putchar('-');
@@ -126,7 +123,6 @@ int printf_int(va_list arg)
 			temp /= 10;
 			i++;
 		}
-		
 		while (revNum != 0)
 		{
 			table[j++] = (revNum % 10) + '0';
