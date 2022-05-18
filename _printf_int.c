@@ -11,6 +11,7 @@ int printf_int(va_list arg)
 	unsigned int count = 0, revNum, temp;
 	int i = 0, j = 0;
 	char table[41];
+
 	if (num < 0)
 	{
 		_putchar('-');
