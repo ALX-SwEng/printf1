@@ -1,6 +1,7 @@
-#include <stdlib.h>
 #include <stdarg.h>
+#include <stdlib.h>
 #include "main.h"
+
 
 /**
  * _printf - print a formatted output.
@@ -17,14 +18,8 @@ int _printf(const char *format, ...)
 
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
-
-	buffer = malloc(sizeof(char) * 1024);
-	
-	if (buffer == NULL)
-		return (-1);
 								
 	va_start(varAargs, format);
-	
 	counter = printf_output(format, varAargs);
 	
 	va_end(varAargs);
@@ -77,7 +72,7 @@ int printf_output(const char *format, va_list val)
 				    case 's':
 				      	tmps = va_arg(val, char*);
 						if (tmps == NULL)
-							tmps = "(null)";
+							return (NULL);
 	
 						while(tmps[k])
 						{
@@ -119,7 +114,7 @@ int printf_int(va_list arg)
 	int num = va_arg(arg, int);
 	unsigned int count = 0, revNum, temp;
 	int i = 0, j = 0;
-	char *table;
+	char table [41];
 
 	if (num < 0)
 	{
@@ -138,8 +133,6 @@ int printf_int(va_list arg)
 			temp /= 10;
 			i++;
 		}
-
-		table = malloc(sizeof(char) * i);
 		
 		while (revNum != 0)
 		{
@@ -159,6 +152,70 @@ int printf_int(va_list arg)
 		count++;
 	}
 
-	free(table);
+	return (count);
+}
+
+
+
+/**
+ * print_x - print an hexadecimal func
+ *@arg: int to convert
+ *Return: printed numb
+ */
+int print_hexa(va_list arg)
+{
+	long int num = va_arg(arg, long int);
+	long unsigned int tmpNum1, tmpNum2;
+	char table[51];
+
+	int i, j, count = 0;
+
+	if (num < 0)
+	{
+		_putchar('-');
+		count++;
+		tmpNum1 = -num;
+	}
+	else
+		tmpNum1 = num;
+
+	if (tmpNum1 == 0)
+	{
+		_putchar('0');
+		count++;
+		return (count);
+	}
+
+	tmpNum2 = tmpNum1;
+	while (tmpNum2)
+	{
+		tmpNum2 /= 16;
+		i++;
+	}
+
+	for (i = 0; tmpNum1 != 0; i++)
+	{
+		if (tmpNum1 % 16 < 10)
+			table[i] = tmpNum1 % 16 + '0';
+		else if (tmpNum1 % 16 == 10)
+			table[i] = 'a';
+		else if (tmpNum1 % 16 == 11)
+			table[i] = 'b';
+		else if (tmpNum1 % 16 == 12)
+			table[i] = 'c';
+		else if (tmpNum1 % 16 == 13)
+			table[i] = 'd';
+		else if (tmpNum1 % 16 == 14)
+			table[i] = 'e';
+		else if (tmpNum1 % 16 == 15)
+			table[i] = 'f';
+		tmpNum1 = tmpNum1 / 16;
+	}
+	i--;
+	for (; i >= 0; i--)
+	{
+		_putchar(table[i]);
+		count++;
+	}
 	return (count);
 }
