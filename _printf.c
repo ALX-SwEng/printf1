@@ -12,11 +12,12 @@ int _printf(const char *format, ...)
 {
 	va_list varAargs;
 	int counter;
+
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
-		return (-1);							
+		return (-1);				
 	va_start(varAargs, format);
 	counter = printf_output(format, varAargs);
-	va_end(varAargs);					
+	va_end(varAargs);		
 return (counter);
 }
 
@@ -36,8 +37,8 @@ int printf_output(const char *format, va_list val)
 	while (format[i])
 	{
 		if (format[i] == '%')
-	  	{
-	  		if (format[i + 1] == '%')
+		{
+			if (format[i + 1] == '%')
 			{
 				_putchar(format[i]);
 				i++;
