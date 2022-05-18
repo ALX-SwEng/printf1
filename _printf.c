@@ -4,9 +4,7 @@
 
 /**
  * _printf - print a formatted output.
- *
- * @format: string pointer to print - may contain directives.
- *
+ * @format: string pointer to print - may contain directives
  * Return: # of characters printed.
  */
 
@@ -21,6 +19,7 @@ int _printf(const char *format, ...)
 	va_end(varAargs);					
 return (counter);
 }
+
 /**
  * print_output - print a formatted output.
  *
@@ -41,56 +40,44 @@ int printf_output(const char *format, va_list val)
 	  		if (format[i + 1] == '%')
 			{
 				_putchar(format[i]);
-			    i++;
-				j++;
-			}
+				i++;
+				j++; }
 			else if (format[i + 1] == '\0')
 			{
 				_putchar(format[i]);
 				j++;
-				return (j);
-			}
+				return (j); }
 			else
 			{
 				i++;
 		 		switch (format[i]) 
 		 		{
-			 	    case 'c':
-			 	        c = (char)va_arg(val, int);
-			 	        _putchar(c);
-			 	        j++; 
-			 	        break;
-	
-				    case 's':
-				      	tmps = va_arg(val, char*);
-						if (tmps == NULL)
-							return (NULL);
-	
-						while(tmps[k])
-						{
-							_putchar(tmps[k++]);
-							j++;
-						}
-				        break;
-	
-			 	    case 'd':
-			 	    case 'i':
-			 	        j += printf_int(val);
-				        break;
-						
-					default:
-						_putchar(format[i]);
-						++j;
-		        }
-		    }
-	    }
+				case 'c':
+					c = (char)va_arg(val, int);
+					_putchar(c);
+					j++; 
+					break;
+				case 's':
+					tmps = va_arg(val, char*);
+					if (tmps == NULL)
+						return (NULL);
+					while(tmps[k])
+					{
+						_putchar(tmps[k++]);
+						j++; }
+					break;
+			 	case 'd':
+				case 'i':
+					j += printf_int(val);
+					break;
+				default:
+					_putchar(format[i]);
+					++j;
+		        } } }
 	    else
 	    {
 		  _putchar(format[i]);
-		    ++j;
-		}
-		++i;
-	}
-
+		    ++j; }
+	++i; }
 return (j);
 }
