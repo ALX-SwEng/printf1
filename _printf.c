@@ -31,7 +31,7 @@ return (counter);
 int printf_output(const char *format, va_list val)
 {
 	int i = 0, j = 0, k = 0;
-	char *tmps, tmpd[20], c;
+	char *tmps, c;
 
 	while (format[i])
 	{
@@ -41,12 +41,12 @@ int printf_output(const char *format, va_list val)
 			{
 				_putchar(format[i]);
 				i++;
-				j++; }
+				j++;}
 			else if (format[i + 1] == '\0')
 			{
 				_putchar(format[i]);
 				j++;
-				return (j); }
+				return (j);}
 
 			i++;
 	 		switch (format[i]) 
@@ -59,7 +59,7 @@ int printf_output(const char *format, va_list val)
 			case 's':
 				tmps = va_arg(val, char*);
 				if (tmps == NULL)
-					return (NULL);
+					return (-1);
 				while(tmps[k])
 				{
 					_putchar(tmps[k++]);
@@ -72,11 +72,12 @@ int printf_output(const char *format, va_list val)
 			default:
 				_putchar(format[i]);
 				++j;
-	        } } }
+	        } 
+		}
 	    else
 	    {
 		  _putchar(format[i]);
-		    ++j; }
+		    ++j;}
 	++i; }
 return (j);
 }
