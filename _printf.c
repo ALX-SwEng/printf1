@@ -15,11 +15,11 @@ int _printf(const char *format, ...)
 	va_list varAargs;
 	int counter;
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
-		return (-1);								
+		return (-1);							
 	va_start(varAargs, format);
 	counter = printf_output(format, varAargs);
-	va_end(varAargs);						
-return (counter); 
+	va_end(varAargs);					
+return (counter);
 }
 /**
  * print_output - print a formatted output.
@@ -32,11 +32,11 @@ return (counter);
 
 int printf_output(const char *format, va_list val)
 {
-	int i = 0, j=0, k = 0;
+	int i = 0, j = 0, k = 0;
 	char *tmps, tmpd[20], c;
 	while (format[i])
 	{
-		if(format[i] == '%')
+		if (format[i] == '%')
 	  	{
 	  		if (format[i + 1] == '%')
 			{
@@ -55,7 +55,7 @@ int printf_output(const char *format, va_list val)
 				i++;
 		 		switch (format[i]) 
 		 		{
-			 	    case 'c': 
+			 	    case 'c':
 			 	        c = (char)va_arg(val, int);
 			 	        _putchar(c);
 			 	        j++; 
