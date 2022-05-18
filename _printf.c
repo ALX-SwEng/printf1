@@ -39,14 +39,12 @@ int printf_output(const char *format, va_list val)
 		{
 			if (format[i + 1] == '%')
 			{
-				_putchar(format[i]);
-				i++;
+				_putchar(format[i++]);
 				j++;}
 			else if (format[i + 1] == '\0')
 			{
 				_putchar(format[i]);
-				j++;
-				return (j);}
+				return (++j);}
 
 			i++;
 	 		switch (format[i]) 
@@ -54,7 +52,7 @@ int printf_output(const char *format, va_list val)
 			case 'c':
 				c = (char)va_arg(val, int);
 				_putchar(c);
-				j++; 
+				j++;
 				break;
 			case 's':
 				tmps = va_arg(val, char*);
@@ -71,13 +69,11 @@ int printf_output(const char *format, va_list val)
 				break;
 			default:
 				_putchar(format[i]);
-				++j;
-	        } 
-		}
-	    else
-	    {
-		  _putchar(format[i]);
-		    ++j;}
+				++j; } }
+		else
+		{
+			_putchar(format[i]);
+			++j; }
 	++i; }
 return (j);
 }
