@@ -1,14 +1,14 @@
 #include "main.h"
 
 /**
- * print_i - prints int func
+ * printf_int - prints int func
  * @arg: int to print
  * Return: number of ints printed
  */
 int printf_int(va_list arg)
 {
 	int num = va_arg(arg, int);
-	unsigned int count = 0, revNum, temp;
+	unsigned int count = 0, revNum;
 	int i = 0, j = 0;
 	char table[41];
 
@@ -23,29 +23,22 @@ int printf_int(va_list arg)
 
 	if (revNum > 0)
 	{
-		temp = revNum;
-		while (temp)
-		{
-			temp /= 10;
-			i++;
-		}
 		while (revNum != 0)
 		{
 			table[j++] = (revNum % 10) + '0';
 			revNum /= 10;
+			i++;
 		}
 		i--;
 		while (i >= 0)
 		{
 			_putchar(table[i--]);
 			count++;
-		}
-	}
+		}}
 	else
 	{
 		_putchar('0');
 		count++;
 	}
-
 	return (count);
 }
