@@ -38,10 +38,9 @@ int printf_output(const char *format, va_list val)
 		{
 			if (format[i + 1] == '\0')
 			{
-				_putchar(format[i - 1]);
+				_putchar(format[i]);
 				++counter;
 			}
-
 			else
 			{
 				i++;
@@ -49,10 +48,12 @@ int printf_output(const char *format, va_list val)
 				if (f == NULL)
 				{
 					if (format[i] != '%')
+					{
 						_putchar(format[i - 1]);
-
+						++counter;
+					}
 					_putchar(format[i]);
-					counter += 2;
+					++counter;
 				}
 				else
 					counter += f(val, 0);
@@ -81,12 +82,12 @@ unsigned int (*check_specifiers(const char *specifier))(va_list, int)
 {
 	int j;
 	print_modifier modifier[] = {
-								{'c', printf_c},
-								{'s', printf_s},
-								{'d', printf_di},
-								{'i', printf_di},
-								{0, NULL}
-							};
+			{'c', printf_c},
+			{'s', printf_s},
+			{'d', printf_di},
+			{'i', printf_di},
+			{0, NULL}
+		};
 	for (j = 0; modifier[j].func; j++)
 	{
 		if (modifier[j].specifier == *specifier)
