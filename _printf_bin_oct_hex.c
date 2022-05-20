@@ -5,7 +5,7 @@
  * @val: string to print - may contain directives.
  * @counter: character counter.
  * Return: # of characters printed.
- */
+*/
 
 unsigned int printf_b(va_list val, int counter)
 {
