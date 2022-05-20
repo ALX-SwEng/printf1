@@ -1,6 +1,6 @@
 #include "main.h"
 
-**
+/**
  * printf_b - print a formatted binary.
  * @val: string to print - may contain directives.
  * @counter: character counter.
