@@ -86,6 +86,11 @@ unsigned int (*check_specifiers(const char *specifier))(va_list, int)
 			{'s', printf_s},
 			{'d', printf_di},
 			{'i', printf_di},
+			{'b', printf_b},
+			{'u', printf_u},
+			{'o', printf_o},
+			{'x', printf_x},
+			{'X', printf_X},
 			{0, NULL}
 		};
 	for (j = 0; modifier[j].func; j++)
