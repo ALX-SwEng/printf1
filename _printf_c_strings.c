@@ -30,7 +30,10 @@ unsigned int printf_s(va_list val, int counter)
 	int k = 0;
 
 	if (tmps == NULL)
-		return (-1);
+	{
+		write (1, "(null)", 6);
+		return (6);
+	}
 
 	counter = 0;
 	while (tmps[k])
