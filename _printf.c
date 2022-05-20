@@ -36,9 +36,10 @@ int printf_output(const char *format, va_list val)
 	{
 		if (format[i] == '%')
 		{
-			if (format[i + 1] == '\0')
+			++i;
+			if (format[i] == '%')
 			{
-				_putchar(format[i]);
+				_putchar(format[i - 1]);
 				++counter;
 			}
 			else
