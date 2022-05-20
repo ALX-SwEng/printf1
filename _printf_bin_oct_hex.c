@@ -18,7 +18,7 @@ unsigned int printf_b(va_list val, int counter)
 	while (tmp /= 10)
 		++len;
 	table = malloc(sizeof(long int) * len);
-	
+
 	if (!binary)
 	{
 		_putchar('0');
@@ -26,7 +26,6 @@ unsigned int printf_b(va_list val, int counter)
 	}
 	else
 	{
-	
 		while (binary)
 		{
 			table[j++] = (binary % 2) + '0';
@@ -49,8 +48,8 @@ unsigned int printf_b(va_list val, int counter)
 
 unsigned int printf_o (va_list val, int counter)
 {
-		long int num = va_arg(val, int);
-	
+	long int num = va_arg(val, int);
+
 	counter = num;
 	return (counter);
 }
@@ -65,7 +64,7 @@ unsigned int printf_x (va_list val, int flag)
 	else
 		_putchar('O');
 	counter = num;
-	
+
 	return (counter);
 }
 
@@ -73,11 +72,12 @@ unsigned int printf_X (va_list val, int flag)
 {
 	int counter = 0;
 	long int num = va_arg(val, int);
+
 	if (flag == 1)
 		_putchar('H');
 	else
 		_putchar('O');
-	
+
 	counter = num;
 	return (counter);
 }
