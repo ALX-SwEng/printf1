@@ -48,7 +48,10 @@ int printf_output(const char *format, va_list val)
 				if (f == NULL)
 				{
 					if (format[i] != '%')
+					{
 						_putchar(format[i - 1]);
+						++counter;
+					}
 					_putchar(format[i]);
 					++counter;
 				}
