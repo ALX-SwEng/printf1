@@ -1,31 +1,31 @@
 #include "main.h"
-
 /**
  * printf_b - print a formatted binary.
  * @val: string to print - may contain directives.
  * @counter: character counter.
  * Return: # of characters printed.
-*/
+ */
 
 unsigned int printf_b(va_list val, int counter)
 {
-	unsigned int binary = va_arg(arg, unsigned int);
+	unsigned int binary = va_arg(val, unsigned int);
 	unsigned int tmp;
-	int count = 0, i = 0, j = 0, len = 0;
+	int i = 0, j = 0, len = 0;
 	char *table;
 
-	tmp = num;
+	tmp = binary;
 	while (tmp /= 10)
 		++len;
 	table = malloc(sizeof(long int) * len);
+	counter = 0;
 
 	if (!binary)
 	{
 		_putchar('0');
-		count++;
+		counter++;
 	}
 	else
-	{
+	{	
 		while (binary)
 		{
 			table[j++] = (binary % 2) + '0';
