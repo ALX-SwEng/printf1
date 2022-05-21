@@ -31,4 +31,10 @@ unsigned int printf_s(va_list, int);
 
 unsigned int printf_di(va_list, int);
 
+unsigned int printf_b(va_list val, int counter);
+unsigned int printf_u(va_list val, int counter);
+unsigned int printf_o(va_list val, int counter);
+	
+unsigned int printf_x(va_list val, int counter);
+unsigned int printf_X(va_list val, int counter);
 #endif
