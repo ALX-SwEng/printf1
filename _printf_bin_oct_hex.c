@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * printf_b - print a formatted binary.
  * @val: string to print - may contain directives.
@@ -8,7 +9,7 @@
 
 unsigned int printf_b(va_list val, int counter)
 {
-	unsigned int binary = va_arg(val, unsigned int);
+	long int binary = va_arg(val, unsigned int);
 	unsigned int tmp;
 	int i = 0, j = 0, len = 0;
 	char *table;
@@ -16,20 +17,22 @@ unsigned int printf_b(va_list val, int counter)
 	tmp = binary;
 	while (tmp /= 10)
 		++len;
-	table = malloc(sizeof(long int) * len);
+	table = malloc(sizeof(char *) * len);
 	counter = 0;
-
+	
 	if (!binary)
 	{
 		_putchar('0');
 		counter++;
 	}
 	else
-	{	
+	{
+	
 		while (binary)
 		{
 			table[j++] = (binary % 2) + '0';
 			binary /= 2;
+			i++;
 		}
 
 		i--;
@@ -41,20 +44,18 @@ unsigned int printf_b(va_list val, int counter)
 		}
 	}
 	free(table);
-
 	return (counter);
 }
 
-
-unsigned int printf_o (va_list val, int counter)
+unsigned int printf_o(va_list val, int counter)
 {
-	long int num = va_arg(val, int);
-
+		long int num = va_arg(val, int);
+	
 	counter = num;
 	return (counter);
 }
 
-unsigned int printf_x (va_list val, int flag)
+unsigned int printf_x(va_list val, int flag)
 {
 	long int num = va_arg(val, int);
 	int counter = 0;
@@ -64,20 +65,19 @@ unsigned int printf_x (va_list val, int flag)
 	else
 		_putchar('O');
 	counter = num;
-
+	
 	return (counter);
 }
 
-unsigned int printf_X (va_list val, int flag)
+unsigned int printf_X(va_list val, int flag)
 {
 	int counter = 0;
 	long int num = va_arg(val, int);
-
 	if (flag == 1)
 		_putchar('H');
 	else
 		_putchar('O');
-
+	
 	counter = num;
 	return (counter);
 }
