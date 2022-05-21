@@ -89,10 +89,10 @@ int handle_width(va_list args, const char *modifier, char *index)
 				return (0);
 			return (value);
 		}
-      value *= 10;
-      value += (*modifier - '0');    
-      modifier++;   
-    }
+		value *= 10;
+		value += (*modifier - '0');
+		modifier++;
+	}
 return (value);
 }
 
@@ -137,8 +137,8 @@ int handle_precision(va_list args, const char *modifier, char *index)
 		value *= 10;
 		value += (*modifier - '0');
 		modifier++;
-	}  
-return (value);  
+	}
+return (value);
 }
 
 /**
@@ -176,5 +176,5 @@ unsigned int (*handle_specifiers(const char *specifier))(va_list, buffer_t *,
 		if (converters[i].specifier == *specifier)
 			return (converters[i].func);
 	}
-return (NULL);  
+return (NULL);
 }
