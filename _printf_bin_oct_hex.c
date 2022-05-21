@@ -15,7 +15,7 @@ unsigned int printf_b(va_list val, int counter)
 	char *table;
 
 	tmp = binary;
-	while (tmp /= 10)
+	while (tmp /= 2)
 		++len;
 	table = malloc(sizeof(char *) * len);
 	counter = 0;
